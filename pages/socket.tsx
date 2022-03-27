@@ -27,7 +27,7 @@ const Home = () => {
 
 	return (
 		<Wrapper>
-			<div className='container'>
+			<div className='container2'>
 				<label htmlFor="instagram">Instagram</label>
 				<input
 					type="checkbox"
@@ -55,7 +55,7 @@ const Home = () => {
 };
 
 const Wrapper = styled.div`
-	.contiainer {
+	.contiainer2 {
 		display: flex;
 		flex-direction: column;
 	}
