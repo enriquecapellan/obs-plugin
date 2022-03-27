@@ -72,7 +72,7 @@ const Wrapper = styled.div`
 		transition: all 2s ease-in-out;
 		overflow: hidden;
 		align-items: center;
-		padding: 1;
+		padding: 1rem;
 		opacity: 0;
 
 		&.active {
@@ -81,7 +81,7 @@ const Wrapper = styled.div`
 
 		.icon {
 			display: flex;
-			padding: 1rem;
+			margin-right: 1rem;
 			img {
 				width: 3rem;
 			}
