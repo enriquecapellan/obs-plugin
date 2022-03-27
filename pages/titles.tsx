@@ -106,8 +106,8 @@ const Wrapper = styled.div`
 	}
 
 	.container {
-		color: white;
-		background-color: rgb(49, 51, 53);
+		color: rgb(49, 51, 53);
+		background-color: white;
 		border-radius: 16px;
 		font-family: "Courier New", Courier, monospace;
 		align-items: center;
@@ -115,6 +115,7 @@ const Wrapper = styled.div`
 		transition: all 2s ease-in-out;
 		overflow: hidden;
 		width: fit-content;
+		display: flex;
 		opacity: 0;
 	}
 
@@ -123,7 +124,7 @@ const Wrapper = styled.div`
 	}
 
 	.name {
-		font-size: 3rem;
+		font-size: 2rem;
 		margin: 0;
 		margin-bottom: 0.5rem;
 	}
@@ -134,7 +135,6 @@ const Wrapper = styled.div`
 	}
 
 	.logo-container {
-		padding: 1rem;
 		margin-right: 1rem;
 		background-color: white;
 		border-radius: 0.5rem;
