@@ -63,7 +63,6 @@ const Wrapper = styled.div`
 	padding: 3rem;
 	box-sizing: border-box;
 	color: rgb(49, 51, 53);
-	background-color: rgb(49, 51, 53);
 	font-family: "Courier New", Courier, monospace;
 
 	.social {
@@ -72,12 +71,13 @@ const Wrapper = styled.div`
 		display: flex;
 		transition: all 2s ease-in-out;
 		overflow: hidden;
-		flex: 0 0 auto;
 		align-items: center;
+		padding: 1;
+		opacity: 0;
+		font-weight: 400;
 
 		&.active {
-			flex: 0 1 auto;
-			padding: 1rem;
+			opacity: 0.9;
 		}
 
 		.icon {
