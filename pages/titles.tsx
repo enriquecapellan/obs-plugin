@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import io, { Socket } from "Socket.IO-client";
+import io, { Socket } from "socket.io-client";
 let socket: Socket;
 
 const Titles = () => {
