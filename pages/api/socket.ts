@@ -10,6 +10,10 @@ const SocketHandler = (req: any, res: any) => {
 			socket.on("set-instagram", (msg) => {
 				socket.broadcast.emit("set-instagram", msg);
 			});
+
+			socket.on("set-info", (msg) => {
+				socket.broadcast.emit("set-info", msg);
+			});
 		});
 	}
 	res.end();

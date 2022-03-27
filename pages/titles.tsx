@@ -14,6 +14,12 @@ const Titles = () => {
 		}
 	});
 
+	const [info, setInfo] = useState({
+		title: '',
+		description: '',
+		active: false
+	})
+
 	useEffect(() => {
 		socketInitializer();
 	}, []);
@@ -32,17 +38,22 @@ const Titles = () => {
 			social.instagram.active = value;
 			setState({ ...state, social });
 		});
+
+		socket.on("set-info", (value) => {
+			console.log("SET_INFO");
+			setInfo(value);
+		});
 	};
 
 	return (
 		<Wrapper>
-			<div id="container" className="container">
+			<div id="container" className={`container ${info.active && "active"}`}>
 				<div className="logo-container">
 					<img src="./logo.png" alt="" className="logo" />
 				</div>
 				<div className="content">
-					<h2 className="name">José Peguero</h2>
-					<p className="description">Mensaje</p>
+					<h2 className="name">{info.title}</h2>
+					<p className="description">{info.description}</p>
 				</div>
 			</div>
 

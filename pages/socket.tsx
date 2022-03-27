@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import io, { Socket } from "socket.io-client";
+import styled from 'styled-components'
+
 let socket: Socket;
 
 const Home = () => {
@@ -18,7 +20,7 @@ const Home = () => {
 
 	return (
 		<>
-			<div>
+			<div className='container'>
 				<label htmlFor="instagram">Instagram</label>
 				<input
 					type="checkbox"
@@ -27,9 +29,24 @@ const Home = () => {
 						socket && socket.emit("set-instagram", e.target.checked);
 					}}
 				/>
+
+				<div className='setting-container'>
+
+				</div>
 			</div>
 		</>
 	);
 };
+
+const Wrapper = styled.div`
+	.contiainer {
+		display: flex;
+		flex-direction: column;
+	}
+	.setting-container {
+		boder: 1px solid black;
+		padding: 1rem;
+	}
+`
 
 export default Home;
