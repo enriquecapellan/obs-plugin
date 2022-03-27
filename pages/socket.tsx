@@ -5,6 +5,13 @@ import styled from 'styled-components'
 let socket: Socket;
 
 const Home = () => {
+
+	const [info, setInfo] = useState({
+		title: '',
+		description: '',
+		active: false
+	})
+
 	useEffect(() => {
 		socketInitializer();
 	}, []);
@@ -19,7 +26,7 @@ const Home = () => {
 	};
 
 	return (
-		<>
+		<Wrapper>
 			<div className='container'>
 				<label htmlFor="instagram">Instagram</label>
 				<input
@@ -31,10 +38,19 @@ const Home = () => {
 				/>
 
 				<div className='setting-container'>
-
+					<input placeholder="Name" value={info.name} onChange={(e) => setInfo({ ...info, title: e.target.value })} />
+					<input placeholder="Description" value={info.description} onChange={(e) => setInfo({ ...info, description: e.target.value })} />
+					<label htmlFor="info">Information</label>
+					<input
+						type="checkbox"
+						id="info"
+						onChange={(e) => {
+							socket && socket.emit("set-info", { ...info, active: e.target.checked });
+						}}
+					/>
 				</div>
 			</div>
-		</>
+		</Wrapper>
 	);
 };
 
