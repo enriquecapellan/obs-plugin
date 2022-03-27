@@ -7,10 +7,6 @@ const SocketHandler = (req: any, res: any) => {
 		res.socket.server.io = io;
 
 		io.on("connection", (socket) => {
-			socket.on("input-change", (msg) => {
-				socket.broadcast.emit("update-input", msg);
-			});
-
 			socket.on("set-instagram", (msg) => {
 				socket.broadcast.emit("set-instagram", msg);
 			});

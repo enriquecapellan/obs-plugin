@@ -74,7 +74,6 @@ const Wrapper = styled.div`
 		align-items: center;
 		padding: 1;
 		opacity: 0;
-		font-weight: 400;
 
 		&.active {
 			opacity: 0.9;
@@ -91,6 +90,7 @@ const Wrapper = styled.div`
 
 	.social-name {
 		font-size: 2.5rem;
+		font-weight: 600;
 		margin: 0;
 	}
 
