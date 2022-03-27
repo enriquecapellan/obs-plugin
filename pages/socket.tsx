@@ -38,7 +38,7 @@ const Home = () => {
 				/>
 
 				<div className='setting-container'>
-					<input placeholder="Name" value={info.name} onChange={(e) => setInfo({ ...info, title: e.target.value })} />
+					<input placeholder="Name" value={info.title} onChange={(e) => setInfo({ ...info, title: e.target.value })} />
 					<input placeholder="Description" value={info.description} onChange={(e) => setInfo({ ...info, description: e.target.value })} />
 					<label htmlFor="info">Information</label>
 					<input
