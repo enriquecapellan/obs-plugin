@@ -115,7 +115,7 @@ const Wrapper = styled.div`
 		transition: all 2s ease-in-out;
 		overflow: hidden;
 		width: fit-content;
-		display: none;
+		opacity: 0;
 	}
 
 	.container.active {
