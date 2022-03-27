@@ -1,0 +1,78 @@
+.plugin-container {
+    display: flex;
+    align-items: flex-end;
+    height: 100vh;
+    padding: 3rem;
+    box-sizing: border-box;
+    color: rgb(49, 51, 53);
+    font-family: "Courier New", Courier, monospace;
+}
+
+.social {
+    background-color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    transition: all 2s ease-in-out;
+    overflow: hidden;
+    align-items: center;
+    padding: 1rem;
+    opacity: 0;
+}
+
+.sociak.active {
+    opacity: 0.9;
+}
+
+.social .icon {
+    display: flex;
+    margin-right: 1rem;
+}
+
+.social .icon img {
+    width: 3rem;
+}
+
+.social-name {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.container {
+    color: rgb(49, 51, 53);
+    background-color: white;
+    border-radius: 16px;
+    font-family: "Courier New", Courier, monospace;
+    align-items: center;
+    padding: 1rem;
+    transition: all 2s ease-in-out;
+    overflow: hidden;
+    width: fit-content;
+    display: flex;
+    opacity: 0;
+}
+
+.container.active {
+    opacity: 0.9;
+}
+
+.name {
+    font-size: 2rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.logo-container {
+    margin-right: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.logo {
+    width: 8rem;
+}
