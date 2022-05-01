@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import io, { Socket } from "socket.io-client";
 let socket: Socket;
 
@@ -15,10 +14,10 @@ const Titles = () => {
 	});
 
 	const [info, setInfo] = useState({
-		title: '',
-		description: '',
+		title: "",
+		description: "",
 		active: false
-	})
+	});
 
 	useEffect(() => {
 		socketInitializer();
@@ -26,28 +25,31 @@ const Titles = () => {
 
 	const socketInitializer = async () => {
 		await fetch("/api/socket");
-		socket = io();
+		socket = io({ reconnection: false });
 
-		socket.on("connect", () => {
-			console.log("connected");
-		});
+		const tryReconnect = () => {
+			setTimeout(() => {
+				socket.io.open((err) => {
+					if (err) {
+						tryReconnect();
+					}
+				});
+			}, 2000);
+		};
 
 		socket.on("set-instagram", (value) => {
-			console.log("SET_INSTAGRAM");
 			const { social } = state;
 			social.instagram.active = value;
 			setState({ ...state, social });
 		});
 
-		socket.on("set-info", (value) => {
-			console.log("SET_INFO");
-			setInfo(value);
-		});
+		socket.on("set-info", (value) => setInfo(value));
+		socket.io.on("close", tryReconnect);
 	};
 
 	return (
-		<div className='plugin-container'>
-			<div id="container" className={`container ${info.active && "active"}`}>
+		<div className="plugin-container">
+			<div id="container" className={`container ${info.active ? "active" : "hidden"}`}>
 				<div className="logo-container">
 					<img src="./logo.png" alt="" className="logo" />
 				</div>
@@ -57,7 +59,7 @@ const Titles = () => {
 				</div>
 			</div>
 
-			<div className={`social ${state.social.instagram.active && "active"}`}>
+			<div className={`social ${state.social.instagram.active ? "active" : "hidden"}`}>
 				<div className="icon">
 					<img src={state.social.instagram.logo} alt="" />
 				</div>
@@ -66,6 +68,5 @@ const Titles = () => {
 		</div>
 	);
 };
-
 
 export default Titles;
