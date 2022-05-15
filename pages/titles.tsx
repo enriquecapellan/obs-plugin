@@ -41,9 +41,19 @@ const Titles = () => {
 			const { social } = state;
 			social.instagram.active = value;
 			setState({ ...state, social });
+			setTimeout(() => {
+				social.instagram.active = false;
+				setState({ ...state, social })
+			}, 15000)
 		});
 
-		socket.on("set-info", (value) => setInfo(value));
+		socket.on("set-info", (value) => {
+			setInfo(value)
+			setTimeout(() => {
+				setState({ ...info, active: false })
+			}, 15000)
+
+		});
 		socket.io.on("close", tryReconnect);
 	};
 
