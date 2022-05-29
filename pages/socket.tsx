@@ -53,6 +53,7 @@ const Home = () => {
 						<label htmlFor="info">Information</label>
 						<input type="checkbox" id="info" checked={info.active} onChange={toggleInfo} />
 					</div>
+					{/* <button className="button">Activar</button> */}
 					<input placeholder="Name" value={info.title} onChange={(e) => setInfo({ ...info, title: e.target.value })} />
 					<input
 						placeholder="Description"
