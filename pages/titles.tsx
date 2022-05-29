@@ -94,10 +94,11 @@ const Wrapper = styled.div`
 	font-family: "Courier New", Courier, monospace;
 
 	.social {
+		position: fixed;
 		background-color: white;
 		border-radius: 0.5rem;
 		display: flex;
-		transition: all 2s ease-in-out;
+		transition: all 1s ease-in-out;
 		overflow: hidden;
 		align-items: center;
 		padding: 1rem;
@@ -134,7 +135,8 @@ const Wrapper = styled.div`
 		font-family: "Courier New", Courier, monospace;
 		align-items: center;
 		padding: 1rem;
-		transition: all 2s ease-in-out;
+		position: fixed;
+		transition: all 1s ease-in-out;
 		overflow: hidden;
 		width: fit-content;
 		display: flex;
