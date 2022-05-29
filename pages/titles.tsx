@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import io, { Socket } from "socket.io-client";
 let socket: Socket;
 
+import styled from "styled-components";
+
 const Titles = () => {
 	const [state, setState] = useState({
 		social: {
@@ -61,7 +63,7 @@ const Titles = () => {
 	};
 
 	return (
-		<div className="plugin-container">
+		<Wrapper>
 			<div id="container" className={`container ${info.active ? "active" : "hidden"}`}>
 				<div className="logo-container">
 					<img src="./logo.png" alt="" className="logo" />
@@ -78,8 +80,95 @@ const Titles = () => {
 				</div>
 				<div className="social-name">@{state.social.instagram.userName}</div>
 			</div>
-		</div>
+		</Wrapper>
 	);
 };
+
+const Wrapper = styled.div`
+	display: flex;
+	align-items: flex-end;
+	height: 100vh;
+	padding: 3rem;
+	box-sizing: border-box;
+	color: rgb(49, 51, 53);
+	font-family: "Courier New", Courier, monospace;
+
+	.social {
+		background-color: white;
+		border-radius: 0.5rem;
+		display: flex;
+		transition: all 2s ease-in-out;
+		overflow: hidden;
+		align-items: center;
+		padding: 1rem;
+		opacity: 0;
+	}
+
+	.social.hidden {
+		transform: scale(0);
+	}
+
+	.social.active {
+		opacity: 0.9;
+	}
+
+	.social .icon {
+		display: flex;
+		margin-right: 1rem;
+	}
+
+	.social .icon img {
+		width: 3rem;
+	}
+
+	.social-name {
+		font-size: 2.5rem;
+		font-weight: 600;
+		margin: 0;
+	}
+
+	.container {
+		color: rgb(49, 51, 53);
+		background-color: white;
+		border-radius: 16px;
+		font-family: "Courier New", Courier, monospace;
+		align-items: center;
+		padding: 1rem;
+		transition: all 2s ease-in-out;
+		overflow: hidden;
+		width: fit-content;
+		display: flex;
+		opacity: 0;
+	}
+
+	.container.hidden {
+		transform: scale(0);
+	}
+
+	.container.active {
+		opacity: 0.9;
+	}
+
+	.name {
+		font-size: 2rem;
+		margin: 0;
+		margin-bottom: 0.5rem;
+	}
+
+	.description {
+		font-size: 2rem;
+		margin: 0;
+	}
+
+	.logo-container {
+		margin-right: 1rem;
+		background-color: white;
+		border-radius: 0.5rem;
+	}
+
+	.logo {
+		width: 8rem;
+	}
+`;
 
 export default Titles;
