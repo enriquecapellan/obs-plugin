@@ -21,6 +21,8 @@ const Titles = () => {
 		active: false
 	});
 
+	const [verse, setVerse] = useState<any>();
+
 	useEffect(() => {
 		socketInitializer();
 	}, []);
@@ -59,6 +61,9 @@ const Titles = () => {
 				}, 15000);
 			}
 		});
+
+		socket.on("set-verse", (value) => setVerse(value));
+
 		socket.io.on("close", tryReconnect);
 	};
 
@@ -80,6 +85,7 @@ const Titles = () => {
 				</div>
 				<div className="social-name">@{state.social.instagram.userName}</div>
 			</div>
+			{verse && <div className="verse" dangerouslySetInnerHTML={{ __html: verse.text }} />}
 		</Wrapper>
 	);
 };
@@ -92,6 +98,13 @@ const Wrapper = styled.div`
 	box-sizing: border-box;
 	color: rgb(49, 51, 53);
 	font-family: "Courier New", Courier, monospace;
+
+	.verse {
+		width: 100%;
+		background: white;
+		padding: 2rem;
+		opacity: 0.8;
+	}
 
 	.social {
 		position: fixed;

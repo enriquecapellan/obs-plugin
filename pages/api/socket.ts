@@ -14,6 +14,10 @@ const SocketHandler = (req: any, res: any) => {
 			socket.on("set-info", (msg) => {
 				socket.broadcast.emit("set-info", msg);
 			});
+			
+			socket.on("set-verse", (msg) => {
+				socket.broadcast.emit("set-verse", msg);
+			});
 		});
 	}
 	res.end();

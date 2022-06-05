@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import styled from "styled-components";
 
 import Select from "react-select";
+import Button from "../Button";
 
-const PanelBible = () => {
+const PanelBible: FC<{ onSelect: (a: any) => void }> = ({ onSelect }) => {
 	const [books, setBooks] = useState<{ value: any; label: string }[]>([]);
 	const [book, setBook] = useState<any>();
 	const [verses, setVerses] = useState([]);
+
+	const [selectedVerse, setVerse] = useState<any | undefined>();
 
 	useEffect(() => {
 		fetch("/api/bible/books/")
@@ -23,8 +26,14 @@ const PanelBible = () => {
 			);
 	}, []);
 
+	function handleSelectVerse(verse: any) {
+		onSelect(verse);
+		setVerse(verse);
+	}
+
 	return (
 		<Wrapper>
+			{selectedVerse && <Button text="Ocultar" onClick={() => handleSelectVerse(undefined)} />}
 			<Select
 				options={books}
 				placeholder="Seleccionar libro"
@@ -52,31 +61,40 @@ const PanelBible = () => {
 					}}
 				/>
 			)}
-			<ul>
+			<div className="verses__container">
 				{verses.map((verse: any) => (
-					<li dangerouslySetInnerHTML={{ __html: verse.text }} />
+					<Verse
+						key={verse.id}
+						active={selectedVerse?.id == verse.id}
+						dangerouslySetInnerHTML={{ __html: verse.text }}
+						onClick={() => handleSelectVerse(verse)}
+					/>
 				))}
-			</ul>
+			</div>
 		</Wrapper>
 	);
 };
 
-const Wrapper = styled.div`
-	ul {
-		list-style: none;
-		overflow: scroll;
-		max-height: 30rem;
-		color: white;
+const Verse = styled.div<{ active: boolean }>`
+	color: white;
+	cursor: pointer;
+	border-radius: 4px;
+	padding: 4px;
+	border: 1px solid ${({ active }) => (active ? "white" : "transparent")};
 
-		li {
-			cursor: pointer;
-			.v {
-				margin-right: 0.5rem;
-			}
-			.s {
-				display: none;
-			}
-		}
+	.v {
+		margin-right: 0.5rem;
+		vertical-align: baseline;
+	}
+	.s {
+		display: none;
+	}
+`;
+
+const Wrapper = styled.div`
+	.verses__container {
+		max-height: 30rem;
+		overflow: auto;
 	}
 `;
 
