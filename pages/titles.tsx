@@ -101,9 +101,17 @@ const Wrapper = styled.div`
 
 	.verse {
 		width: 100%;
+		position: absolute;
+		left: 0;
+		bottom: 0;
 		background: white;
 		padding: 2rem;
-		opacity: 0.8;
+		opacity: 0.9;
+
+		.v {
+			margin-right: 0.5rem;
+			vertical-align: baseline;
+		}
 	}
 
 	.social {
